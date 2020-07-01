@@ -1,8 +1,10 @@
 certifi==2020.6.20
 chardet==3.0.4
 click==7.1.2
+emoji==0.5.4
 Flask==1.1.2
 idna==2.10
+instagram-private-api @ git+https://git@github.com/ping/instagram_private_api.git@1d70e99bc11591161b0cd71cff3f0c08cd04b34f
 itsdangerous==1.1.0
 Jinja2==2.11.2
 MarkupSafe==1.1.1
