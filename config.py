@@ -2,8 +2,12 @@ import os
 import telebot
 from telebot import types
 import emoji
+import pickle
 from flask import Flask, request
+from dotenv import load_dotenv
+load_dotenv()
 
+DEBUG = True
 
 # Telegram variables
 TOKEN = os.getenv("TOKEN")
@@ -15,7 +19,3 @@ PASSWORD = os.getenv("PASSWORD")
 WEBHOOK_URL = os.getenv("WEBHOOK_URL")
 
 bot = telebot.AsyncTeleBot(TOKEN, threaded=True)
-
-import importdir
-importdir.do("main/handlers", globals())
-importdir.do("main/functions", globals())
