@@ -1,4 +1,5 @@
 from app import *
+from ..main.functions import Action
 
 @bot.message_handler(regexp="^Dx15")
 def echo(msg):
@@ -22,17 +23,19 @@ def echo(msg):
 
                 link = message[2]
 
-                bot.send_message(
-                    msg.chat.id,
-                    f"""
-    Username - instagram.com/{username}
-    Picture url - {link}
-                    """
-                )
+                action = Action(username, link)
+                
+                action.get_user_id()
+                post = get_media_id()
 
+                if post is None:
+                    bot.reply_to(
+                        msg,
+                        f"This post was not found in @{username}'s timeline feed"
+                    )
+                else:
 
-            ###################################ADD LISTING BUSINESS LOGIC
-            ####CHECK IF USER HAS PERFORMED LIKE ACTIONS
+                    ####CHECK IF USER HAS PERFORMED LIKE ACTIONS
 
 
 
@@ -54,6 +57,11 @@ Invalid Format! The right format is
             )
             
         bot.delete_message(msg.chat.id, msg.message_id)
+        time.sleep(5)
+
+        #delete the next message
+        msg.message_id += 1
+        bot.delete_message(msg.chat.id, msg.message_id)
 
     else:
 
@@ -63,4 +71,9 @@ Invalid Format! The right format is
         )
         
         
+        bot.delete_message(msg.chat.id, msg.message_id)
+        time.sleep(5)
+
+        #delete the next message
+        msg.message_id += 1
         bot.delete_message(msg.chat.id, msg.message_id)

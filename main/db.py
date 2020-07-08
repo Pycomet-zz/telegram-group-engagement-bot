@@ -15,6 +15,6 @@ class Storage(object):
         "Write user data to database"
         pass
 
-    def add_new_link(self):
+    def append_to_list(self):
         "Add Link Received from this instance user"
         pass
