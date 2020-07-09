@@ -1,5 +1,5 @@
 from app import *
-from ..main.functions import Action
+from main.functions import Action
 
 @bot.message_handler(regexp="^Dx15")
 def echo(msg):
@@ -26,7 +26,7 @@ def echo(msg):
                 action = Action(username, link)
                 
                 action.get_user_id()
-                post = get_media_id()
+                post = action.get_media_id()
 
                 if post is None:
                     bot.reply_to(
@@ -34,7 +34,7 @@ def echo(msg):
                         f"This post was not found in @{username}'s timeline feed"
                     )
                 else:
-
+                    pass
                     ####CHECK IF USER HAS PERFORMED LIKE ACTIONS
 
 

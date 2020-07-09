@@ -4,8 +4,8 @@ from config import *
 class Storage(object):
 
     def __init__(self, tg_id, username):
-        user_id = tg_id
-        user_handle = username
+        self.user_id = tg_id
+        self.user_handle = username
 
     def check_store(self):
         "Checks if user is stored already"

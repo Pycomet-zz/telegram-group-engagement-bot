@@ -5,6 +5,7 @@ import emoji
 import time
 import pickle
 from flask import Flask, request
+from instagram_private_api import Client
 from dotenv import load_dotenv
 load_dotenv()
 
@@ -19,4 +20,6 @@ PASSWORD = os.getenv("PASSWORD")
 
 WEBHOOK_URL = os.getenv("WEBHOOK_URL")
 
-bot = telebot.AsyncTeleBot(TOKEN, threaded=True)
+bot = telebot.TeleBot(TOKEN, threaded=True)
+
+client = Client(USERNAME, PASSWORD)
