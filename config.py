@@ -1,5 +1,6 @@
 import os
 import telebot
+import telegram
 from telebot import types
 import emoji
 import time

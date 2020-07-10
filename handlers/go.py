@@ -26,7 +26,7 @@ def echo(msg):
                 action = Action(username, link)
                 
                 action.get_user_id()
-                post = get_media_id()
+                post = action.get_media_id()
 
                 if post is None:
                     bot.reply_to(
@@ -34,10 +34,24 @@ def echo(msg):
                         f"This post was not found in @{username}'s timeline feed"
                     )
                 else:
-                    pass
+                
                     ####CHECK IF USER HAS PERFORMED LIKE ACTIONS
+                    action.check_likes()
+                    action.check_comments()
 
+                    status = action.get_status()
 
+                    if status != True:
+                        bot.reply_to(
+                            msg,
+                            emoji.emojize(f":x: {status}", use_aliases=True)
+                        )
+                    else:
+                        bot.reply_to(
+                            msg,
+                            emoji.emojize(":white_check_mark: Approved")
+                        )
+                        action.add_to_list()
 
             else:
                 bot.reply_to(
@@ -77,3 +91,6 @@ Invalid Format! The right format is
         #delete the next message
         msg.message_id += 1
         bot.delete_message(msg.chat.id, msg.message_id)
+
+
+
