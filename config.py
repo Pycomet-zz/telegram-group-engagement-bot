@@ -24,3 +24,5 @@ WEBHOOK_URL = os.getenv("WEBHOOK_URL")
 bot = telebot.TeleBot(TOKEN, threaded=True)
 
 client = Client(USERNAME, PASSWORD)
+
+ADMIN_ID = os.getenv("ADMIN_ID")

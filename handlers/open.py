@@ -34,11 +34,8 @@ def echo(msg):
                         f"This post was not found in @{username}'s timeline feed"
                     )
                 else:
-                
-                    ####CHECK IF USER HAS PERFORMED LIKE ACTIONS
                     action.check_likes()
                     action.check_comments()
-
                     status = action.get_status()
 
                     if status != True:
