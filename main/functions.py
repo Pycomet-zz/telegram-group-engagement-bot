@@ -28,12 +28,13 @@ class Action(object):
         data = client.user_feed(self.insta_id).get('items')
 
         results = [post['id'] for post in data if post['code'] == code]
-        self.media_id = results[0] if len(results) != 0 else None
+        output = results[0] if len(results) != 0 else None
+        self.media_id = output.split("_")[0]
         return self.media_id
 
     def get_list(self):
         "Gets the curent list for checking"
-        file = open("list.json", 'rb')
+        file = open("main/list.json", 'rb')
         data = pickle.load(file)
         file.close()
         return data
@@ -48,7 +49,8 @@ class Action(object):
         "Check the list if the user has liked them"
         data = self.get_list()
         for link in data:    
-            likers = client.media_likers(media_id=link['media_id']).get("users")
+            query_set = client.media_likers(media_id=link['media_id']).get("users")
+            likers = [i['pk'] for i in query_set]
             for user in likers:
                 if self.insta_id == user:
                     self.likes += 1
@@ -60,7 +62,8 @@ class Action(object):
         "Checks the list if the user has commented on them"
         data = self.get_list()
         for link in data:    
-            comments = client.media_comments(media_id=link['media_id']).get("comments")
+            query_set = client.media_comments(media_id=link['media_id']).get("comments")
+            comments = [i['user_id'] for i in query_set]
             for user in comments:
                 if self.insta_id == user:
                     self.comments += 1
@@ -70,7 +73,8 @@ class Action(object):
 
     def get_status(self):
         "Returns the user status of number of likes"
-        if self.likes == 15 and self.comments == 15:
+        # if self.likes == 15 and self.comments == 15:
+        if self.likes == self.comments:
             return True
         else:
             return f"You liked {self.likes} pictures and {self.comments} comments"
@@ -80,14 +84,16 @@ class Action(object):
         
         #List manipulation
         current_list = self.get_list()
-        current_list.remove(current_list[0])
+        if len(current_list) >= 15:
+            current_list.remove(current_list[0])
         user = {
+            'id': current_list[-1]['id'] + 1,
             'media_id': self.media_id,
-            'mdeia_url': self.url
+            'media_url': self.url
         }
-        new_list = current_list.append(user)
+        current_list.append(user)
 
         file = open("list.json", "wb")
-        pickle.dump(new_list, file)
+        pickle.dump(current_list, file)
         file.close()
         

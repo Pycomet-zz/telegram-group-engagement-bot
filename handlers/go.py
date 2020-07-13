@@ -31,7 +31,7 @@ def echo(msg):
                 if post is None:
                     bot.reply_to(
                         msg,
-                        f"This post was not found in @{username}'s timeline feed"
+                        f"This post was not found in {username}'s timeline feed"
                     )
                 else:
                 
@@ -49,7 +49,7 @@ def echo(msg):
                     else:
                         bot.reply_to(
                             msg,
-                            emoji.emojize(":white_check_mark: Approved")
+                            emoji.emojize(":heavy_check_mark: Approved", use_aliases=True)
                         )
                         action.add_to_list()
 
@@ -59,7 +59,8 @@ def echo(msg):
                     f"""
 Wrong Format! The right format is
 {message_format}
-                    """
+                    """,
+                    disable_web_page_preview=True
                 )
         except:
             bot.reply_to(
@@ -67,7 +68,8 @@ Wrong Format! The right format is
                 f"""
 Invalid Format! The right format is
 {message_format}
-                """
+                """,
+                disable_web_page_preview=True
             )
             
         bot.delete_message(msg.chat.id, msg.message_id)

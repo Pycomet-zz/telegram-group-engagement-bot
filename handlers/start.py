@@ -30,8 +30,8 @@ def start(msg):
     bot.delete_message(msg.chat.id, msg.message_id)
 
     #delete the next message
-    msg.message_id += 1
-    bot.delete_message(msg.chat.id, msg.message_id)
+    # msg.message_id += 1
+    # bot.delete_message(msg.chat.id, msg.message_id)
 
 
     
