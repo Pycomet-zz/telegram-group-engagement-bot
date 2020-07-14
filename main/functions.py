@@ -65,9 +65,18 @@ class Action(object):
 
     def get_status(self):
         "Returns the user status of number of likes"
+
+        #Get the susbcribers
+        file = open("main/subscribers.json", "rb")
+        subscribers = pickle.load(file)
+        file.close()
+
         if self.likes == 15 and self.comments == 15:
-        # if self.likes == self.comments:
             return True
+
+        elif self.subscribers in data:
+            return True
+
         else:
             return f"You liked {self.likes} pictures and {self.comments} comments"
 
@@ -132,7 +141,8 @@ class Subscriber(object):
             self.file.close()
             return bot.send_message(
                 int(ADMIN_ID),
-                f"<b>{user} Subscription activated!</b>"
+                f"<b>{user} Subscription activated!</b>",
+                parse_mode=telegram.ParseMode.HTML,
                 )
 
 
