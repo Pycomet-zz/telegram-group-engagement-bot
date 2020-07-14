@@ -84,14 +84,20 @@ class Action(object):
         
         #List manipulation
         current_list = self.get_list()
+        
         if len(current_list) >= 15:
             current_list.remove(current_list[0])
-        user = {
-            'id': current_list[-1]['id'] + 1,
-            'media_id': self.media_id,
-            'media_url': self.url
-        }
-        current_list.append(user)
+        
+        elif current_list[-1].get("media_id") == self.media_id:
+            pass
+        
+        else:
+            user = {
+                'id': current_list[-1]['id'] + 1,
+                'media_id': self.media_id,
+                'media_url': self.url
+            }
+            current_list.append(user)
 
         file = open("main/list.json", "wb")
         pickle.dump(current_list, file)
