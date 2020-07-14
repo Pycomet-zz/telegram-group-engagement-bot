@@ -1,5 +1,5 @@
 from app import *
-from ..main.functions import Subscriber
+from main.functions import Subscriber
 
 
 @bot.callback_query_handler(func=lambda call: True)
@@ -40,31 +40,36 @@ def callback_answer(call):
             disable_web_page_preview=True
         )
 
-    elif call.data == "send_ad":
+    elif call.data == "ad":
         question = bot.send_message(
             call.from_user.id,
             "Paste your advestisement writing below to post to Dx15 Engagement Group....",
             reply_markup=force_reply
         )
+        
         bot.register_next_step_handler(question, send_ad)
 
 
-    elif call.data == "add_subscriber":
-        
+    elif call.data == "activate":
+
+        subscriber = Subscriber().activate
         question = bot.send_message(
-            call.from_user.id,
+            int(ADMIN_ID),
             "To add a new subscriber, paste the instagram username below",
             reply_markup=force_reply
         )
-        bot.register_next_step_handler(question, Subsciber().activate)
+        
+        bot.register_next_step_handler(question, subscriber)
 
-    elif call.data == "remove_subscriber":
+    elif call.data == "deactivate":
+        subscriber = Subscriber().deactivate
         question = bot.send_message(
-            call.from_user.id,
+            int(ADMIN_ID),
             "To deactivate a subscriber, paste the instagram username below",
             reply_markup=force_reply
         )
-        bot.register_next_step_handler(question, Subsciber().deactivate)
+        
+        bot.register_next_step_handler(question, subscriber)
 
     else:
         pass
@@ -78,12 +83,6 @@ def send_ad(msg):
     "Sends Add Message To Group"
     message = msg.text
 
-    bot.send_message(
-        int(GROUP_ID),
-        f"<b>{message}</b>",
-        parse_mode=telegram.ParseMode.HTML
-    )
-
     # Fetch List
     file = open("main/list.json", 'rb')
     data = pickle.load(file)
@@ -92,8 +91,10 @@ def send_ad(msg):
     bot.send_message(
         int(GROUP_ID),
         f"""
-<b>Dx15 INSTAGRAM LIST</b>
+<b>{message}</b>
 
+--------------------------
+<b>Dx15 INSTAGRAM LIST</b>
 1)  {data[0].get("media_url")}
 2)  {data[1].get("media_url")}
 3)  {data[2].get("media_url")}

@@ -2,10 +2,10 @@ from app import *
 
 
 keyboard = types.InlineKeyboardMarkup(row_width=1)
-a = types.InlineKeyboardButton(text=emoji.emojize(":memo: Activate Subscriber", use_aliases=True), callback_data="add_subscriber")
-b = types.InlineKeyboardButton(text=emoji.emojize(":scroll: Send Advert to Pod", use_aliases=True), callback_data="send_ad")
-c = types.InlineKeyboardButton(text=emoji.emojize(":scroll: Deactivate Subscriber", use_aliases=True), callback_data="remove_subscriber")
-keyboard.add(a,b,c)
+a = types.InlineKeyboardButton(text=emoji.emojize(":memo: Activate Subscriber", use_aliases=True), callback_data="activate")
+b = types.InlineKeyboardButton(text=emoji.emojize(":scroll: Send Advertisement", use_aliases=True), callback_data="ad")
+c = types.InlineKeyboardButton(text=emoji.emojize(":memo: Deactivate Subscriber", use_aliases=True), callback_data="deactivate")
+keyboard.add(a,c,b)
 
 
 @bot.message_handler(commands=['admin', 'panel'])
@@ -16,8 +16,12 @@ def handle_admin(msg):
 
         bot.send_message(
             msg.chat.id,
-            f"Hello {msg.from_user.username}, welcome back to the Dx15 bot administrative panel.",
-            reply_markup=keyboard
+            f"""
+Welcome Back {msg.from_user.username},
+            
+    <b>Dx15 Group Administrative Panel.</b>""",
+            reply_markup=keyboard,
+            parse_mode=telegram.ParseMode.HTML
         )
 
     else:

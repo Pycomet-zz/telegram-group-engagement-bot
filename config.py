@@ -21,7 +21,7 @@ PASSWORD = os.getenv("PASSWORD")
 
 WEBHOOK_URL = os.getenv("WEBHOOK_URL")
 
-bot = telebot.AsyncTeleBot(TOKEN, threaded=True)
+bot = telebot.TeleBot(TOKEN, threaded=True)
 
 # client = Client(USERNAME, PASSWORD)
 

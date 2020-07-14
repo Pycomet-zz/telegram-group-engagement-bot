@@ -105,15 +105,19 @@ class Subscriber(object):
     def __init__(self):
         self.file = ''
 
-    def get_subscribers():
+    def get_subscribers(self):
         "Return The List of subscribers"
         self.file = open("main/subscribers.json", "rb")
-        data = pickle.load(self.file)
+        try:
+            data = pickle.load(self.file)
+        except EOFError as e:
+            data = []    
         self.file.close
         return list(data)
 
-    def activate(self, user):
+    def activate(self, user_obj):
         "Adds user handle to data storage"
+        user = user_obj.text
         users = self.get_subscribers()
 
         if user in users:
@@ -122,33 +126,35 @@ class Subscriber(object):
                 "Already a subscriber."
                 )
         else:
-            self.file = open("main/subscribers", "wb")
+            self.file = open("main/subscribers.json", "wb")
             users.append(user)
             pickle.dump(users, self.file)
             self.file.close()
             return bot.send_message(
                 int(ADMIN_ID),
-                f"{user} Subscription activated!"
+                f"<b>{user} Subscription activated!</b>"
                 )
 
 
-    def deactivate(self, user):
+    def deactivate(self, user_obj):
         "removes user handle to data storage"
+        user = user_obj.text
         users = self.get_subscribers()
 
         if user not in users:
             return bot.send_message(
                 int(ADMIN_ID),
-                "This user is not a subscriber."
+                "This user is not a subscriber"
                 )
         else:
-            self.file = open("main/subscribers", "wb")
-            users.pop(user)
+            self.file = open("main/subscribers.json", "wb")
+            users.remove(user)
             pickle.dump(users, self.file)
             self.file.close()
             return bot.send_message(
                 int(ADMIN_ID),
-                f"{user} Subscription deactivated!"
+                f"<b>{user} Subscription deactivated!</b>",
+                parse_mode=telegram.ParseMode.HTML,
                 )
 
 
