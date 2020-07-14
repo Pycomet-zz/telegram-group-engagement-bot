@@ -2,13 +2,11 @@ from config import *
 
 
 class Action(object):
-
     def __init__(self, username, url):
         self.user = username
         self.insta_id = ''
         self.url = url
         self.media_id = ''
-
         self.likes = 0 # Marking the posts the user has liked
         self.comments = 0 # Marking the posts the user has commented on
 
@@ -38,12 +36,6 @@ class Action(object):
         data = pickle.load(file)
         file.close()
         return data
-
-    def get_likes(self):
-        return self.likes
-
-    def get_comments(self):
-        return self.comments
 
     def check_likes(self):
         "Check the list if the user has liked them"
@@ -103,3 +95,61 @@ class Action(object):
         pickle.dump(current_list, file)
         file.close()
         
+
+
+
+
+
+
+class Subscriber(object):
+    def __init__(self):
+        self.file = ''
+
+    def get_subscribers():
+        "Return The List of subscribers"
+        self.file = open("main/subscribers.json", "rb")
+        data = pickle.load(self.file)
+        self.file.close
+        return list(data)
+
+    def activate(self, user):
+        "Adds user handle to data storage"
+        users = self.get_subscribers()
+
+        if user in users:
+            return bot.send_message(
+                int(ADMIN_ID),
+                "Already a subscriber."
+                )
+        else:
+            self.file = open("main/subscribers", "wb")
+            users.append(user)
+            pickle.dump(users, self.file)
+            self.file.close()
+            return bot.send_message(
+                int(ADMIN_ID),
+                f"{user} Subscription activated!"
+                )
+
+
+    def deactivate(self, user):
+        "removes user handle to data storage"
+        users = self.get_subscribers()
+
+        if user not in users:
+            return bot.send_message(
+                int(ADMIN_ID),
+                "This user is not a subscriber."
+                )
+        else:
+            self.file = open("main/subscribers", "wb")
+            users.pop(user)
+            pickle.dump(users, self.file)
+            self.file.close()
+            return bot.send_message(
+                int(ADMIN_ID),
+                f"{user} Subscription deactivated!"
+                )
+
+
+

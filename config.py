@@ -21,9 +21,13 @@ PASSWORD = os.getenv("PASSWORD")
 
 WEBHOOK_URL = os.getenv("WEBHOOK_URL")
 
-bot = telebot.TeleBot(TOKEN, threaded=True)
+bot = telebot.AsyncTeleBot(TOKEN, threaded=True)
 
-client = Client(USERNAME, PASSWORD)
+# client = Client(USERNAME, PASSWORD)
 
 ADMIN_ID = os.getenv("ADMIN_ID")
 GROUP_ID = os.getenv("GROUP_ID")
+
+
+
+force_reply = types.ReplyKeyboardRemove(selective=False)

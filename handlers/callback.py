@@ -1,4 +1,5 @@
 from app import *
+from ..main.functions import Subscriber
 
 
 @bot.callback_query_handler(func=lambda call: True)
@@ -41,15 +42,29 @@ def callback_answer(call):
 
     elif call.data == "send_ad":
         question = bot.send_message(
-            msg.from_user.id,
-            "Paste your advestisement writing below to post to Dx15 Engagement Group...."
+            call.from_user.id,
+            "Paste your advestisement writing below to post to Dx15 Engagement Group....",
+            reply_markup=force_reply
         )
         bot.register_next_step_handler(question, send_ad)
 
 
-    elif call.data == "premium":
-        ### ADD AND REMOVE PREMIUM USERS
-        pass
+    elif call.data == "add_subscriber":
+        
+        question = bot.send_message(
+            call.from_user.id,
+            "To add a new subscriber, paste the instagram username below",
+            reply_markup=force_reply
+        )
+        bot.register_next_step_handler(question, Subsciber().activate)
+
+    elif call.data == "remove_subscriber":
+        question = bot.send_message(
+            call.from_user.id,
+            "To deactivate a subscriber, paste the instagram username below",
+            reply_markup=force_reply
+        )
+        bot.register_next_step_handler(question, Subsciber().deactivate)
 
     else:
         pass
@@ -64,7 +79,7 @@ def send_ad(msg):
     message = msg.text
 
     bot.send_message(
-        GROUP_ID,
+        int(GROUP_ID),
         f"<b>{message}</b>",
         parse_mode=telegram.ParseMode.HTML
     )
@@ -75,7 +90,7 @@ def send_ad(msg):
     file.close()
     
     bot.send_message(
-        GROUP_ID,
+        int(GROUP_ID),
         f"""
 <b>Dx15 INSTAGRAM LIST</b>
 

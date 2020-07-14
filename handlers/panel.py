@@ -1,18 +1,18 @@
 from app import *
 
 
-keyboard = types.InlineKeyboardMarkup(row_width=2)
-a = types.InlineKeyboardButton(text=emoji.emojize(":memo: Add/Remove Premium User", use_aliases=True), callback_data="premium")
+keyboard = types.InlineKeyboardMarkup(row_width=1)
+a = types.InlineKeyboardButton(text=emoji.emojize(":memo: Activate Subscriber", use_aliases=True), callback_data="add_subscriber")
 b = types.InlineKeyboardButton(text=emoji.emojize(":scroll: Send Advert to Pod", use_aliases=True), callback_data="send_ad")
-b = types.InlineKeyboardButton(text=emoji.emojize(":scroll: Cancel Premium User", use_aliases=True), callback_data="remove_premium")
-keyboard.add(a)
+c = types.InlineKeyboardButton(text=emoji.emojize(":scroll: Deactivate Subscriber", use_aliases=True), callback_data="remove_subscriber")
+keyboard.add(a,b,c)
 
 
-@bot.message_handler(commands=['admin'])
-def admin(msg):
+@bot.message_handler(commands=['admin', 'panel'])
+def handle_admin(msg):
     """Admin feature to the bot management"""
 
-    if msg.from_user.id == ADMIN_ID:
+    if msg.from_user.id == int(ADMIN_ID):
 
         bot.send_message(
             msg.chat.id,
