@@ -73,8 +73,8 @@ class Action(object):
 
     def get_status(self):
         "Returns the user status of number of likes"
-        # if self.likes == 15 and self.comments == 15:
-        if self.likes == self.comments:
+        if self.likes == 15 and self.comments == 15:
+        # if self.likes == self.comments:
             return True
         else:
             return f"You liked {self.likes} pictures and {self.comments} comments"
@@ -93,7 +93,7 @@ class Action(object):
         }
         current_list.append(user)
 
-        file = open("list.json", "wb")
+        file = open("main/list.json", "wb")
         pickle.dump(current_list, file)
         file.close()
         

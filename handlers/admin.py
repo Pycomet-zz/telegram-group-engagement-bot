@@ -9,7 +9,7 @@ keyboard.add(a)
 
 
 @bot.message_handler(commands=['admin'])
-def panel(msg):
+def admin(msg):
     """Admin feature to the bot management"""
 
     if msg.from_user.id == ADMIN_ID:

@@ -75,9 +75,12 @@ Invalid Format! The right format is
         bot.delete_message(msg.chat.id, msg.message_id)
         time.sleep(5)
 
-        #delete the next message
-        msg.message_id += 1
-        bot.delete_message(msg.chat.id, msg.message_id)
+        try:
+            #delete the next message
+            msg.message_id += 1
+            bot.delete_message(msg.chat.id, msg.message_id)
+        except:
+            pass
 
     else:
 
