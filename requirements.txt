@@ -1,16 +1,24 @@
 certifi==2020.6.20
+cffi==1.14.0
 chardet==3.0.4
 click==7.1.2
+cryptography==2.9.2
+decorator==4.4.2
 emoji==0.5.4
 Flask==1.1.2
+gunicorn==20.0.4
 idna==2.10
 instagram-private-api @ git+https://git@github.com/ping/instagram_private_api.git@1d70e99bc11591161b0cd71cff3f0c08cd04b34f
 itsdangerous==1.1.0
 Jinja2==2.11.2
 MarkupSafe==1.1.1
+pycparser==2.20
 pyTelegramBotAPI==3.7.1
 python-decouple==3.3
+python-dotenv==0.14.0
+python-telegram-bot==12.8
 requests==2.24.0
 six==1.15.0
+tornado==6.0.4
 urllib3==1.25.9
 Werkzeug==1.0.1
