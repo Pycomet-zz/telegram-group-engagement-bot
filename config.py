@@ -10,7 +10,7 @@ from instagram_private_api import Client
 from dotenv import load_dotenv
 load_dotenv()
 
-DEBUG = True
+DEBUG = False
 
 # Telegram variables
 TOKEN = os.getenv("TOKEN")
@@ -23,7 +23,7 @@ WEBHOOK_URL = os.getenv("WEBHOOK_URL")
 
 bot = telebot.TeleBot(TOKEN, threaded=True)
 
-# client = Client(USERNAME, PASSWORD)
+client = Client(USERNAME, PASSWORD)
 
 ADMIN_ID = os.getenv("ADMIN_ID")
 GROUP_ID = os.getenv("GROUP_ID")
