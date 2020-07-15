@@ -10,7 +10,7 @@ from instagram_private_api import Client
 from dotenv import load_dotenv
 load_dotenv()
 
-DEBUG = True
+DEBUG = False
 
 # Telegram variables
 TOKEN = os.getenv("TOKEN")
