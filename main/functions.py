@@ -22,13 +22,22 @@ class Action(object):
         "Returns The Target Media ID"
         code = self.url.strip("/").split("/")[-1]
 
-        ## Check user feed for post relating to this code
-        data = client.user_feed(self.insta_id).get('items')
+        # ## Check user feed for post relating to this code
+        # data = client.user_feed(self.insta_id).get('items')
 
-        results = [post['id'] for post in data if post['code'] == code]
-        output = results[0] if len(results) != 0 else None
-        self.media_id = output.split("_")[0]
+        # results = [post['id'] for post in data if post['code'] == code]
+        # output = results[0] if len(results) != 0 else None
+        
+        # self.media_id = output.split("_")[0] if output is not None else None
+        # return self.media_id
+
+        ##################################################
+        data = insta.get_medias_by_code(code)
+        self.media_id = data.identifier if data is not None else None
         return self.media_id
+
+
+
 
     def get_list(self):
         "Gets the curent list for checking"

@@ -7,6 +7,7 @@ import time
 import pickle
 from flask import Flask, request
 from instagram_private_api import Client
+from igramscraper.instagram import Instagram
 from dotenv import load_dotenv
 load_dotenv()
 
@@ -28,6 +29,6 @@ client = Client(USERNAME, PASSWORD)
 ADMIN_ID = os.getenv("ADMIN_ID")
 GROUP_ID = os.getenv("GROUP_ID")
 
-
+insta = Instagram()
 
 force_reply = types.ReplyKeyboardRemove(selective=False)
