@@ -27,7 +27,7 @@ def start(msg):
             parse_mode=telegram.ParseMode.HTML,
             reply_markup=keyboard
         )
-    bot.delete_message(msg.chat.id, msg.message_id)
+        bot.delete_message(msg.chat.id, msg.message_id)
 
     else:
         pass
