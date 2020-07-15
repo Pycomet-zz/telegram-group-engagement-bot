@@ -19,18 +19,18 @@ keyboard.add(a)
 @bot.message_handler(commands=['start'])
 def start(msg):
     
-    # if msg.chat.type == "private":
+    if msg.chat.type == "private":
 
-    bot.reply_to(
-        msg,
-        emoji.emojize(message, use_aliases=True),
-        parse_mode=telegram.ParseMode.HTML,
-        reply_markup=keyboard
-    )
-    # bot.delete_message(msg.chat.id, msg.message_id)
+        bot.reply_to(
+            msg,
+            emoji.emojize(message, use_aliases=True),
+            parse_mode=telegram.ParseMode.HTML,
+            reply_markup=keyboard
+        )
+    bot.delete_message(msg.chat.id, msg.message_id)
 
-    # else:
-    #     pass
+    else:
+        pass
     #delete the next message
     # msg.message_id += 1
     # bot.delete_message(msg.chat.id, msg.message_id)
