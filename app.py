@@ -23,7 +23,7 @@ if __name__ == "__main__":
     if DEBUG == True:
         print("bot polling...")
 
-        # bot.remove_webhook()
+        bot.remove_webhook()
         bot.polling(none_stop=True)
     else:
         server.run(host="0.0.0.0", port=int(os.environ.get('PORT', 5000)))

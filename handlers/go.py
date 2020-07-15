@@ -7,7 +7,7 @@ def echo(msg):
     Checking The User's Message Within The Licensed Group
     """
 
-    message_format = "Dx15 @instatravel.lifestyle https://www.instagram.com/p/CCDtc0kRMl_-/"
+    message_format = "Dx15 @instatravel.lifestyle https://www.instagram.com/p/CCk4PN9sz4S/"
 
     if msg.chat.type == "group" or msg.chat.type == "supergroup":
 

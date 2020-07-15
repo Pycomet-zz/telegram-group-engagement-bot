@@ -74,7 +74,7 @@ class Action(object):
         if self.likes == 15 and self.comments == 15:
             return True
 
-        elif self.subscribers in data:
+        elif self.user in subscribers:
             return True
 
         else:
