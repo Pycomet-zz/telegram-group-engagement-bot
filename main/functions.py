@@ -33,7 +33,10 @@ class Action(object):
     def get_list(self):
         "Gets the curent list for checking"
         file = open("main/list.json", 'rb')
-        data = pickle.load(file)
+        try:
+            data = pickle.load(file)
+        except EOFError as e:
+            data = []
         file.close()
         return data
 
