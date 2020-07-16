@@ -14,7 +14,7 @@ def callback_answer(call):
         data = pickle.load(file)
         file.close()
         
-        bot.send_message(
+        message = bot.send_message(
             call.message.chat.id,
             f"""
 <b>Dx15 INSTAGRAM LIST</b>
@@ -39,6 +39,9 @@ def callback_answer(call):
             parse_mode=telegram.ParseMode.HTML,
             disable_web_page_preview=True
         )
+
+        time.sleep(20)
+        bot.delete_message(message.chat.id, message.message_id)
 
     elif call.data == "ad":
         question = bot.send_message(

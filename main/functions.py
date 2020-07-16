@@ -32,7 +32,15 @@ class Action(object):
         # return self.media_id
 
         ##################################################
-        data = insta.get_medias_by_code(code)
+        try:
+            data = insta.get_medias_by_code(code)
+        except:
+            # authentication supported
+            time.sleep(3)
+            insta.with_credentials(USERNAME, PASSWORD)
+            insta.login()
+            data = insta.get_medias_by_code(code)
+
         self.media_id = data.identifier if data is not None else None
         return self.media_id
 
@@ -97,25 +105,21 @@ class Action(object):
         
         #List manipulation
         current_list = self.get_list()
-        
+
+        media_ids = [i['media_id'] for i in current_list]
+        user = {
+            'media_id': self.media_id,
+            'media_url': self.url
+        }
         try:
             if len(current_list) >= 15:
                 current_list.remove(current_list[0])
-            
-            elif current_list[-1].get("media_id") == self.media_id:
+                current_list.append(user)
+            elif self.media_id in media_ids:
                 pass
-            
             else:
-                user = {
-                    'media_id': self.media_id,
-                    'media_url': self.url
-                }
                 current_list.append(user)
         except IndexError:
-            user = {
-                'media_id': self.media_id,
-                'media_url': self.url
-            }
             current_list.append(user)
 
 

@@ -14,63 +14,63 @@ def echo(msg):
         #Check the message format
         text = msg.text
 
-        try:
-            message = text.split(" ")
+        # try:
+        message = text.split(" ")
 
-            username = message[1].strip("@")
+        username = message[1].strip("@")
 
-            if len(message[2].strip("/").split("/")) == 5:
+        if len(message[2].strip("/").split("/")) == 5:
 
-                link = message[2]
+            link = message[2]
 
-                action = Action(username, link)
-                
-                action.get_user_id()
-                post = action.get_media_id()
+            action = Action(username, link)
+            
+            action.get_user_id()
+            post = action.get_media_id()
 
-                if post is None:
-                    bot.reply_to(
-                        msg,
-                        f"This post was not found in {username}'s timeline feed"
-                    )
-                else:
-                
-                    ####CHECK IF USER HAS PERFORMED LIKE ACTIONS
-                    action.check_likes()
-                    action.check_comments()
-
-                    status = action.get_status()
-
-                    if status != True:
-                        bot.reply_to(
-                            msg,
-                            emoji.emojize(f":x: {status}", use_aliases=True)
-                        )
-                    else:
-                        bot.reply_to(
-                            msg,
-                            emoji.emojize(":heavy_check_mark: Approved", use_aliases=True)
-                        )
-                        action.add_to_list()
-
-            else:
+            if post is None:
                 bot.reply_to(
                     msg,
-                    f"""
-Wrong Format! The right format is
-{message_format}
-                    """,
-                    disable_web_page_preview=True
+                    f"This post was not found in {username}'s timeline feed"
                 )
-        except:
+            else:
+            
+                ####CHECK IF USER HAS PERFORMED LIKE ACTIONS
+                action.check_likes()
+                action.check_comments()
+
+                status = action.get_status()
+
+                if status != True:
+                    bot.reply_to(
+                        msg,
+                        emoji.emojize(f":x: {status}", use_aliases=True)
+                    )
+                else:
+                    bot.reply_to(
+                        msg,
+                        emoji.emojize(":heavy_check_mark: Approved", use_aliases=True)
+                    )
+                    action.add_to_list()
+
+        else:
             bot.reply_to(
                 msg,
                 f"""
-Invalid Format! The right format is
+Wrong Format! The right format is
 {message_format}
                 """,
                 disable_web_page_preview=True
             )
+#         except:
+#             bot.reply_to(
+#                 msg,
+#                 f"""
+# Invalid Format! The right format is
+# {message_format}
+#                 """,
+#                 disable_web_page_preview=True
+#             )
             
         bot.delete_message(msg.chat.id, msg.message_id)
         time.sleep(5)
