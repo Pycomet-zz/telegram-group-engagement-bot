@@ -17,7 +17,7 @@ def callback_answer(call):
         message = bot.send_message(
             call.message.chat.id,
             f"""
-<b>Dx15 INSTAGRAM LIST</b>
+<b>Dx30 INSTAGRAM LIST</b>
 
 1)  {data[0].get("media_url")}
 2)  {data[1].get("media_url")}
@@ -34,7 +34,23 @@ def callback_answer(call):
 13)  {data[12].get("media_url")}        
 14)  {data[13].get("media_url")}        
 15)  {data[14].get("media_url")}
-       
+16)  {data[15].get("media_url")}
+17)  {data[16].get("media_url")}
+18)  {data[17].get("media_url")}
+19)  {data[18].get("media_url")}
+20)  {data[19].get("media_url")}
+21)  {data[20].get("media_url")}
+22)  {data[21].get("media_url")}
+23)  {data[22].get("media_url")}
+24)  {data[23].get("media_url")}
+25)  {data[24].get("media_url")}
+26)  {data[25].get("media_url")}
+27)  {data[26].get("media_url")}
+28)  {data[27].get("media_url")}
+29)  {data[28].get("media_url")}
+30)  {data[29].get("media_url")}
+
+
             """,
             parse_mode=telegram.ParseMode.HTML,
             disable_web_page_preview=True
@@ -46,7 +62,7 @@ def callback_answer(call):
     elif call.data == "ad":
         question = bot.send_message(
             call.from_user.id,
-            "Paste your advestisement writing below to post to Dx15 Engagement Group....",
+            "Paste your advestisement writing below to post to Dx30 Engagement Group....",
             reply_markup=force_reply
         )
         
@@ -97,7 +113,7 @@ def send_ad(msg):
 <b>{message}</b>
 
 --------------------------
-<b>Dx15 INSTAGRAM LIST</b>
+<b>Dx30 INSTAGRAM LIST</b>
 1)  {data[0].get("media_url")}
 2)  {data[1].get("media_url")}
 3)  {data[2].get("media_url")}
@@ -113,6 +129,21 @@ def send_ad(msg):
 13)  {data[12].get("media_url")}        
 14)  {data[13].get("media_url")}        
 15)  {data[14].get("media_url")}
+16)  {data[15].get("media_url")}
+17)  {data[16].get("media_url")}
+18)  {data[17].get("media_url")}
+19)  {data[18].get("media_url")}
+20)  {data[19].get("media_url")}
+21)  {data[20].get("media_url")}
+22)  {data[21].get("media_url")}
+23)  {data[22].get("media_url")}
+24)  {data[23].get("media_url")}
+25)  {data[24].get("media_url")}
+26)  {data[25].get("media_url")}
+27)  {data[26].get("media_url")}
+28)  {data[27].get("media_url")}
+29)  {data[28].get("media_url")}
+30)  {data[29].get("media_url")}
     
         """,
         parse_mode=telegram.ParseMode.HTML,

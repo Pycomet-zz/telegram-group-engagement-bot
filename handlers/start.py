@@ -12,7 +12,7 @@ message = """
 
 keyboard = types.InlineKeyboardMarkup(row_width=2)
 # a = types.InlineKeyboardButton(text=emoji.emojize(":memo: Check :memo:", use_aliases=True), callback_data="check")
-a = types.InlineKeyboardButton(text=emoji.emojize(":scroll: Dx15 List", use_aliases=True), callback_data="list")
+a = types.InlineKeyboardButton(text=emoji.emojize(":scroll: Dx30 List", use_aliases=True), callback_data="list")
 keyboard.add(a)
 
 
