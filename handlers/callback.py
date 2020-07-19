@@ -59,7 +59,7 @@ def callback_answer(call):
         except IndexError:
             message = bot.send_message(
                 call.message.chat.id,
-                f"The Dx30 engagement list is almost complete! Contact @codefred to get registered to Global Trade Club community and grow your intsgram presence",
+                f"<b>The Dx30 engagement list is almost complete! Contact @codefred to get registered to Global Trade Club community and grow your instagram presence</b>",
                 parse_mode=telegram.ParseMode.HTML,
                 disable_web_page_preview=True
             )
