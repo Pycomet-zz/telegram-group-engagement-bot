@@ -29,7 +29,7 @@ def echo(msg):
             post = action.get_media_id()
 
             if post is None:
-                bot.reply_to(
+                reply = bot.reply_to(
                     msg,
                     f"This post was not found in {username}'s timeline feed"
                 )
@@ -42,7 +42,7 @@ def echo(msg):
                 status = action.get_status()
 
                 if status != True:
-                    bot.reply_to(
+                    reply = bot.reply_to(
                         msg,
                         emoji.emojize(f":x: {status}", use_aliases=True)
                     )
@@ -54,7 +54,7 @@ def echo(msg):
                     action.add_to_list()
 
         else:
-            bot.reply_to(
+            reply = bot.reply_to(
                 msg,
                 f"""
 Wrong Format! The right format is
@@ -72,30 +72,21 @@ Wrong Format! The right format is
 #                 disable_web_page_preview=True
 #             )
             
-        bot.delete_message(msg.chat.id, msg.message_id)
-        time.sleep(5)
-
-        try:
-            #delete the next message
-            msg.message_id += 1
-            bot.delete_message(msg.chat.id, msg.message_id)
-        except:
-            pass
-
     else:
 
-        bot.reply_to(
+        reply = bot.reply_to(
             msg,
             "You are not authorized to use this endpoint directly! Please go to your referenced Engagment Group"
         )
         
         
-        bot.delete_message(msg.chat.id, msg.message_id)
-        time.sleep(5)
+    bot.delete_message(msg.chat.id, msg.message_id)
+    time.sleep(5)
 
-        #delete the next message
-        msg.message_id += 1
-        bot.delete_message(msg.chat.id, msg.message_id)
+    try:
+        bot.delete_message(msg.chat.id, reply.message_id)
+    except:
+        pass
 
 
 
