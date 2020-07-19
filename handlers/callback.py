@@ -14,47 +14,56 @@ def callback_answer(call):
         data = pickle.load(file)
         file.close()
         
-        message = bot.send_message(
-            call.message.chat.id,
-            f"""
-<b>Dx30 INSTAGRAM LIST</b>
+        try:
+            message = bot.send_message(
+                call.message.chat.id,
+                f"""
+    <b>Dx30 INSTAGRAM LIST</b>
 
-1)  {data[0].get("media_url")}
-2)  {data[1].get("media_url")}
-3)  {data[2].get("media_url")}
-4)  {data[3].get("media_url")}
-5)  {data[4].get("media_url")}
-6)  {data[5].get("media_url")}
-7)  {data[6].get("media_url")}
-8)  {data[7].get("media_url")}
-9)  {data[8].get("media_url")}        
-10)  {data[9].get("media_url")}        
-11)  {data[10].get("media_url")}        
-12)  {data[11].get("media_url")}        
-13)  {data[12].get("media_url")}        
-14)  {data[13].get("media_url")}        
-15)  {data[14].get("media_url")}
-16)  {data[15].get("media_url")}
-17)  {data[16].get("media_url")}
-18)  {data[17].get("media_url")}
-19)  {data[18].get("media_url")}
-20)  {data[19].get("media_url")}
-21)  {data[20].get("media_url")}
-22)  {data[21].get("media_url")}
-23)  {data[22].get("media_url")}
-24)  {data[23].get("media_url")}
-25)  {data[24].get("media_url")}
-26)  {data[25].get("media_url")}
-27)  {data[26].get("media_url")}
-28)  {data[27].get("media_url")}
-29)  {data[28].get("media_url")}
-30)  {data[29].get("media_url")}
+    1)  {data[0].get("media_url")}
+    2)  {data[1].get("media_url")}
+    3)  {data[2].get("media_url")}
+    4)  {data[3].get("media_url")}
+    5)  {data[4].get("media_url")}
+    6)  {data[5].get("media_url")}
+    7)  {data[6].get("media_url")}
+    8)  {data[7].get("media_url")}
+    9)  {data[8].get("media_url")}        
+    10)  {data[9].get("media_url")}        
+    11)  {data[10].get("media_url")}        
+    12)  {data[11].get("media_url")}        
+    13)  {data[12].get("media_url")}        
+    14)  {data[13].get("media_url")}        
+    15)  {data[14].get("media_url")}
+    16)  {data[15].get("media_url")}
+    17)  {data[16].get("media_url")}
+    18)  {data[17].get("media_url")}
+    19)  {data[18].get("media_url")}
+    20)  {data[19].get("media_url")}
+    21)  {data[20].get("media_url")}
+    22)  {data[21].get("media_url")}
+    23)  {data[22].get("media_url")}
+    24)  {data[23].get("media_url")}
+    25)  {data[24].get("media_url")}
+    26)  {data[25].get("media_url")}
+    27)  {data[26].get("media_url")}
+    28)  {data[27].get("media_url")}
+    29)  {data[28].get("media_url")}
+    30)  {data[29].get("media_url")}
 
 
-            """,
-            parse_mode=telegram.ParseMode.HTML,
-            disable_web_page_preview=True
-        )
+                """,
+                parse_mode=telegram.ParseMode.HTML,
+                disable_web_page_preview=True
+            )
+        except IndexError:
+            message = bot.send_message(
+                call.message.chat.id,
+                f"The Dx30 engagement list is almost complete! Contact @codefred to get registered to Global Trade Club community and grow your intsgram presence",
+                parse_mode=telegram.ParseMode.HTML,
+                disable_web_page_preview=True
+            )
+
 
         time.sleep(20)
         bot.delete_message(message.chat.id, message.message_id)

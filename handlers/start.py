@@ -7,7 +7,7 @@ message = """
 :raising_hand: Join the Premium Subscribers and post without engaging back or get auto comments every time you post to our pods :raising_hand:
 
 :point_right: Contact admin:
- @Gridfever :phone:
+ @codefred :phone:
 """
 
 keyboard = types.InlineKeyboardMarkup(row_width=2)
