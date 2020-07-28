@@ -17,9 +17,6 @@
 *** for contributors-url, forks-url, etc. This is an optional, concise syntax you may use.
 *** https://www.markdownguide.org/basic-syntax/#reference-style-links
 -->
-[![Contributors][contributors-shield]][contributors-url]
-[![Forks][forks-shield]][forks-url]
-[![Stargazers][stars-shield]][stars-url]
 [![Issues][issues-shield]][issues-url]
 [![MIT License][license-shield]][license-url]
 [![LinkedIn][linkedin-shield]][linkedin-url]
@@ -29,14 +26,14 @@
 <!-- PROJECT LOGO -->
 <br />
 <p align="center">
-  <a href="https://github.com/Pycomet/telegram-group-engagement-bot">
+  <!-- <a href="https://github.com/Pycomet/telegram-group-engagement-bot">
     <img src="images/logo.png" alt="Logo" width="80" height="80">
-  </a>
+  </a> -->
 
   <h3 align="center">Telegram Group Engagement Bot</h3>
 
   <p align="center">
-    An awesome README template to jumpstart your projects!
+    This is a telegram bot that aims peer to peer growth on instagram presence right from telegram
     <br />
     <a href="https://github.com/Pycomet/telegram-group-engagement-bot"><strong>Explore the docs »</strong></a>
     <br />
@@ -200,5 +197,5 @@ Project Link: [https://github.com/your_username/repo_name](https://github.com/yo
 [license-shield]: https://img.shields.io/github/license/Pycomet/telegram-group-engagement-bot.svg?style=flat-square
 [license-url]: https://github.com/Pycomet/telegram-group-engagement-bot/blob/master/LICENSE.txt
 [linkedin-shield]: https://img.shields.io/badge/-LinkedIn-black.svg?style=flat-square&logo=linkedin&colorB=555
-[linkedin-url]: https://linkedin.com/in/othneildrew
+[linkedin-url]: https://linkedin.com/in/alfredemmanuelinyang/
 [product-screenshot]: images/screenshot.png
