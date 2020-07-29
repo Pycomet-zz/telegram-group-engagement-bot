@@ -64,21 +64,34 @@ This application is built with python at the core and the most functionality wit
 <!-- USAGE EXAMPLES -->
 ### Usage
 
-Use this space to show useful examples of how a project can be used. Additional screenshots, code examples and demos work well in this space. You may also link to more resources.
+To use this application as your own, follow these simple steps;
 
-_For more examples, please refer to the [Documentation](https://example.com)_
+  - Fork this repository (`git clone https://github.com/Pycomet/telegram-group-engagement-bot.git`)
 
+  - Create a `.env` file with the following data
+    - `TOKEN` - This is the telegram bot token from `@botfather`
+    - `USERNAME` - Instagram account username
+    - `PASSWORD` - Instagram account password
+    - `WEBHOOK_URL` - Pre-defined web hook to be used for the app
+    - `ADMIN_ID` - Admin telegram ID for special access
+    - `GROUP_ID` - Telegram group to be managed the bot for receiving engagement links
+
+  - Goto `config.py` and set `DEBUG` to "True" to run locally and "False" to run in production
+
+  - Run the entrypoint file `python app.py`
+
+Enjoy!
 
 
 <!-- ROADMAP -->
-## Roadmap
+### Roadmap
 
 See the [open issues](https://github.com/Pycomet/telegram-group-engagement-bot/issues) for a list of proposed features (and known issues).
 
 
 
 <!-- CONTRIBUTING -->
-## Contributing
+### Contributing
 
 Contributions are what make the open source community such an amazing place to be learn, inspire, and create. Any contributions you make are **greatly appreciated**.
 
@@ -91,14 +104,14 @@ Contributions are what make the open source community such an amazing place to b
 
 
 <!-- LICENSE -->
-## License
+### License
 
 Distributed under the MIT License. See `LICENSE` for more information.
 
 
 
 <!-- CONTACT -->
-## Contact
+### Contact
 
 My Website - <a href="https://www.codefred.me">www.codefred.me</a>
 
