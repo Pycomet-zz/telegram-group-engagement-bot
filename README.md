@@ -82,6 +82,9 @@ To use this application as your own, follow these simple steps;
 
 Enjoy!
 
+## Show your support
+
+Give a ⭐️ if this project helped you!
 
 <!-- ROADMAP -->
 ### Roadmap
