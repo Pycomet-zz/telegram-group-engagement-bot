@@ -87,7 +87,7 @@ Wrong Format! The right format is
 :raising_hand: Join the Premium Subscribers and post without engaging back or get auto comments every time you post to our pods :raising_hand:
 
 :point_right: Contact admin:
- @codefred :phone:
+ @Gridfever :phone:
 """
         
         reply = bot.reply_to(
