@@ -19,7 +19,7 @@ def handle_admin(msg):
             f"""
 Welcome Back {msg.from_user.username},
             
-    <b>Dx30 Group Administrative Panel.</b>""",
+    <b>Dx15 Group Administrative Panel.</b>""",
             reply_markup=keyboard,
             parse_mode=telegram.ParseMode.HTML
         )
