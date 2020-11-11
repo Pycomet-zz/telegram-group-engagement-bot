@@ -1,10 +1,17 @@
 from app import *
 from main.functions import Action
 
-keyboard = types.InlineKeyboardMarkup(row_width=2)
+keyboard1 = types.InlineKeyboardMarkup(row_width=2)
 # a = types.InlineKeyboardButton(text=emoji.emojize(":memo: Check :memo:", use_aliases=True), callback_data="check")
 a = types.InlineKeyboardButton(text=emoji.emojize(":scroll: Dx50 List", use_aliases=True), callback_data="list")
-keyboard.add(a)
+keyboard1.add(a)
+
+keyboard2 = types.InlineKeyboardMarkup(row_width=1)
+a = types.InlineKeyboardButton(text=emoji.emojize(":memo: Activate Subscriber", use_aliases=True), callback_data="activate")
+b = types.InlineKeyboardButton(text=emoji.emojize(":scroll: Send Advertisement", use_aliases=True), callback_data="ad")
+c = types.InlineKeyboardButton(text=emoji.emojize(":memo: Deactivate Subscriber", use_aliases=True), callback_data="deactivate")
+keyboard2.add(a,c,b)
+
 
 
 @bot.message_handler()
