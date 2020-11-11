@@ -105,6 +105,8 @@ def callback_answer(call):
 
 
 
+
+
 def send_ad(msg):
     "Sends Add Message To Group"
     message = msg.text
