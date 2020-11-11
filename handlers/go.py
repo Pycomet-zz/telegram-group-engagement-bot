@@ -78,24 +78,36 @@ Wrong Format! The right format is
                 disable_web_page_preview=True
             )
 
-
-    elif msg.chat.type == "private":
-
+    elif msg.chat.type == "private" and msg.text != '/panel':
+    
         message = """
 <b>:bangbang: STOP Liking & Commenting :bangbang:</b>
 
 :raising_hand: Join the Premium Subscribers and post without engaging back or get auto comments every time you post to our pods :raising_hand:
 
 :point_right: Contact admin:
- @codefred :phone:
+@theonegrow
 """
-        
+
         reply = bot.reply_to(
             msg,
             emoji.emojize(message, use_aliases=True),
             parse_mode=telegram.ParseMode.HTML,
-            reply_markup=keyboard
+            reply_markup=keyboard1
         )
+
+    elif msg.chat.type == "private" and msg.text == '/panel':
+
+        reply = bot.send_message(
+            msg.chat.id,
+            f"""
+Welcome Back {msg.from_user.username},
+            
+    <b>Dx15 Group Administrative Panel.</b>""",
+            reply_markup=keyboard2,
+            parse_mode=telegram.ParseMode.HTML
+        )
+
 
     else:    
         pass
