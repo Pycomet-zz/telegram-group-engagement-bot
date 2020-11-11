@@ -54,8 +54,8 @@ def callback_answer(call):
                 parse_mode=telegram.ParseMode.HTML,
                 disable_web_page_preview=True
             )
-        except IndexError:
-            message = bot.send_message(
+        except Exception as e:
+            reply = bot.send_message(
                 call.message.chat.id,
                 f"<b>The Dx50 engagement list is almost complete! Contact the engagement bot pod to get on the list.</b>",
                 parse_mode=telegram.ParseMode.HTML,
