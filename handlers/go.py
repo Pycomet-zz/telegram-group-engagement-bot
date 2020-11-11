@@ -29,8 +29,6 @@ def echo(msg):
 
         message = text.split(" ")
 
-        username = message[1].strip("@")
-
         if len(message) != 3:
             reply = bot.reply_to(
                 msg,
@@ -44,6 +42,8 @@ Wrong Format! The right format is
         elif len(message[2].strip("/").split("/")) == 5:
 
             link = message[2]
+
+            username = message[1].strip("@")
 
             action = Action(username, link)
             
