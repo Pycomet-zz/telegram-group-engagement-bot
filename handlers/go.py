@@ -3,7 +3,7 @@ from main.functions import Action
 
 keyboard = types.InlineKeyboardMarkup(row_width=2)
 # a = types.InlineKeyboardButton(text=emoji.emojize(":memo: Check :memo:", use_aliases=True), callback_data="check")
-a = types.InlineKeyboardButton(text=emoji.emojize(":scroll: Dx15 List", use_aliases=True), callback_data="list")
+a = types.InlineKeyboardButton(text=emoji.emojize(":scroll: Dx50 List", use_aliases=True), callback_data="list")
 keyboard.add(a)
 
 
@@ -13,7 +13,7 @@ def echo(msg):
     Checking The User's Message Within The Licensed Group
     """
 
-    message_format = "Dx15 @instatravel.lifestyle https://www.instagram.com/p/CCk4PN9sz4S/"
+    message_format = "Dx50 @instatravel.lifestyle https://www.instagram.com/p/CCk4PN9sz4S/"
 
     if msg.chat.type == "group" or msg.chat.type == "supergroup":
 
@@ -87,7 +87,7 @@ Wrong Format! The right format is
 :raising_hand: Join the Premium Subscribers and post without engaging back or get auto comments every time you post to our pods :raising_hand:
 
 :point_right: Contact admin:
- @codefred :phone:
+ @theoneknow :phone:
 """
         
         reply = bot.reply_to(
@@ -103,7 +103,7 @@ Wrong Format! The right format is
 
     try:
         bot.delete_message(msg.chat.id, msg.message_id)
-        time.sleep(60)
+        time.sleep(30)
 
         bot.delete_message(msg.chat.id, reply.message_id)
     except:

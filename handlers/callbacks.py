@@ -18,7 +18,7 @@ def callback_answer(call):
             reply = bot.send_message(
                 call.message.chat.id,
                 f"""
-        <b>Dx15 INSTAGRAM LIST</b>
+        <b>Dx50 INSTAGRAM LIST</b>
 
     1)  {data[0].get("media_url")}
 
@@ -57,7 +57,7 @@ def callback_answer(call):
         except IndexError:
             message = bot.send_message(
                 call.message.chat.id,
-                f"<b>The Dx15 engagement list is almost complete! Contact @codefred to get registered to Global Trade Club community and grow your instagram presence</b>",
+                f"<b>The Dx50 engagement list is almost complete! Contact the engagement bot pod to get on the list.</b>",
                 parse_mode=telegram.ParseMode.HTML,
                 disable_web_page_preview=True
             )
@@ -69,7 +69,7 @@ def callback_answer(call):
     elif call.data == "ad":
         question = bot.send_message(
             call.from_user.id,
-            "Paste your advestisement writing below to post to Dx15 Engagement Group....",
+            "Paste your advestisement writing below to post to Dx50 Engagement Group....",
             reply_markup=force_reply
         )
         
