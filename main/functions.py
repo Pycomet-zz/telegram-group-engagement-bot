@@ -91,15 +91,15 @@ class Action(object):
         subscribers = pickle.load(file)
         file.close()
 
-        if self.likes >= 10 or self.comments >= 10:
+        if self.user in subscribers:
             return True
-
-        elif self.user in subscribers:
+        
+        elif self.likes >= 10 or self.comments >= 10:
             return True
 
         else:
-            return True
-            # return f"You liked {self.likes} pictures and {self.comments} comments"
+            # return True
+            return f"You liked {self.likes} pictures and {self.comments} comments"
 
     def add_to_list(self):
         "Adds the user data to the list"
