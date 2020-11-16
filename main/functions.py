@@ -75,7 +75,7 @@ class Action(object):
         data = self.get_list()
         for link in data:    
             query_set = client.media_comments(media_id=link['media_id']).get("comments")
-            comments = [i['user_id'] for i in query_set]
+            comments = [i['user_id'] for i in query_set if query_set != None]
             for user in comments:
                 if self.insta_id == user:
                     self.comments += 1
