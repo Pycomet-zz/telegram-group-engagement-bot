@@ -12,7 +12,7 @@ from pymongo import MongoClient
 from dotenv import load_dotenv
 load_dotenv()
 
-DEBUG = True
+DEBUG = False
 
 # Telegram variables
 TOKEN = os.getenv("TOKEN")
