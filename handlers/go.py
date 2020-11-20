@@ -47,7 +47,7 @@ Wrong Format! The right format is
 
             action = Action(username, link)
             
-            action.get_user_id()
+            # action.get_user_id()
             post = action.get_media_id()
 
             if post is None:
@@ -58,8 +58,8 @@ Wrong Format! The right format is
             else:
             
                 ####CHECK IF USER HAS PERFORMED LIKE ACTIONS
-                action.check_likes()
-                action.check_comments()
+                # action.check_likes()
+                # action.check_comments()
 
                 status = action.get_status()
 

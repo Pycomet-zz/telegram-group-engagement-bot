@@ -1,4 +1,5 @@
 from config import *
+from datetime import datetime
 
 
 class Action(object):
@@ -45,17 +46,12 @@ class Action(object):
         return self.media_id
 
 
-
-
     def get_list(self):
-        "Gets the curent list for checking"
-        file = open("main/list.json", 'rb')
-        try:
-            data = pickle.load(file)
-        except EOFError as e:
-            data = []
-        file.close()
+        "Fetch current list from database"
+        data = [i for i in sessions_db.find()][-10:] #return the last 10 links
         return data
+
+
 
     def check_likes(self):
         "Check the list if the user has liked them"
@@ -87,9 +83,7 @@ class Action(object):
         "Returns the user status of number of likes"
 
         #Get the susbcribers
-        file = open("main/subscribers.json", "rb")
-        subscribers = pickle.load(file)
-        file.close()
+        subscribers = Subscriber().get_subscribers()
 
         if self.user in subscribers:
             return True
@@ -101,33 +95,25 @@ class Action(object):
             # return True
             return f"You liked {self.likes} pictures and {self.comments} comments"
 
-    def add_to_list(self):
-        "Adds the user data to the list"
         
-        #List manipulation
+    def add_to_list(self):
+        "Send new post to database"
         current_list = self.get_list()
 
         media_ids = [i['media_id'] for i in current_list]
-        user = {
+        new_post = {
             'media_id': self.media_id,
-            'media_url': self.url
+            'media_url': self.url,
+            'time_posted': datetime.utcnow()
         }
-        try:
-            if len(current_list) >= 15:
-                current_list.remove(current_list[0])
-                current_list.append(user)
-            elif self.media_id in media_ids:
-                pass
-            else:
-                current_list.append(user)
-        except IndexError:
-            current_list.append(user)
 
-
-        file = open("main/list.json", "wb")
-        pickle.dump(current_list, file)
-        file.close()
+        if self.media_id not in media_ids:
+            result = sessions_db.insert_one(new_post).inserted_id
+            print(result)
         
+        else:
+            pass
+
 
 
 
@@ -135,18 +121,27 @@ class Action(object):
 
 
 class Subscriber(object):
-    def __init__(self):
-        self.file = ''
 
     def get_subscribers(self):
-        "Return The List of subscribers"
-        self.file = open("main/subscribers.json", "rb")
-        try:
-            data = pickle.load(self.file)
-        except EOFError as e:
-            data = []    
-        self.file.close
-        return list(data)
+        "Fetch Documents from database"
+        data = [i['username'] for i in subscribers_db.find()]
+        return data
+
+    def add_subscriber(self, user):
+        "Add new subscriber to the database"
+        new_post = {
+            'username': user,
+        }
+        result = subscribers_db.insert_one(new_post).inserted_id
+        return result
+
+    def remove_subscriber(self, user):
+        "Remove subscriber from database"
+        criteria = {
+            'username': user
+        }
+        subscribers_db.delete_one(criteria)
+
 
     def activate(self, user_obj):
         "Adds user handle to data storage"
@@ -159,13 +154,10 @@ class Subscriber(object):
                 "Already a subscriber."
                 )
         else:
-            self.file = open("main/subscribers.json", "wb")
-            users.append(user)
-            pickle.dump(users, self.file)
-            self.file.close()
+            result = self.add_subscriber(user)
             return bot.send_message(
                 int(ADMIN_ID),
-                f"<b>{user} Subscription activated!</b>",
+                f"<b>{user} Subscription activated! - {result}</b>",
                 parse_mode=telegram.ParseMode.HTML,
                 )
 
@@ -181,10 +173,7 @@ class Subscriber(object):
                 "This user is not a subscriber"
                 )
         else:
-            self.file = open("main/subscribers.json", "wb")
-            users.remove(user)
-            pickle.dump(users, self.file)
-            self.file.close()
+            self.delete_subscriber(user)
             return bot.send_message(
                 int(ADMIN_ID),
                 f"<b>{user} Subscription deactivated!</b>",
