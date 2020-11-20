@@ -10,11 +10,9 @@ def callback_answer(call):
     if call.data == "list":
 
         # Fetch List
-        file = open("main/list.json", 'rb')
-        data = pickle.load(file)
-        file.close()
+        data = [i for i in sessions_db.find()][-10:]
 
-        try:        
+        try:
             reply = bot.send_message(
                 call.message.chat.id,
                 f"""
@@ -39,16 +37,6 @@ def callback_answer(call):
     9)  {data[8].get("media_url")}
 
     10)  {data[9].get("media_url")}
-
-    11)  {data[10].get("media_url")}
-
-    12)  {data[11].get("media_url")}
-
-    13)  {data[12].get("media_url")}
-
-    14)  {data[13].get("media_url")}
-
-    15)  {data[14].get("media_url")}
         
                 """,
                 parse_mode=telegram.ParseMode.HTML,
@@ -110,11 +98,6 @@ def callback_answer(call):
 def send_ad(msg):
     "Sends Add Message To Group"
     message = msg.text
-
-    # Fetch List
-    file = open("main/list.json", 'rb')
-    data = pickle.load(file)
-    file.close()
     
     bot.send_message(
         int(GROUP_ID),
