@@ -85,6 +85,31 @@ def callback_answer(call):
         
         bot.register_next_step_handler(question, subscriber)
 
+
+    elif call.data == "rules":
+        reply = bot.send_message(
+            call.from_user.id,
+            f"""
+Hey {call.from_user.first_name}, I am guessing this is your first attempting to join Dx50 enagagement bot list. Here are the steps you should follow;
+
+<b>STEP 1</b> ➡️ Send /start to @Instgramgfluencerbot to get the current list
+
+<b>STEP 2</b> ➡️ Like and comment on at least 10 posts from the list gotten from the bot in <b>STEP 1</b>
+
+<b>STEP 3</b> ➡️ Goto t.me/instagramgrowthg and join the engagement with your instagram post in the following format - "Dx50 @instatravel.lifestyle https://www.instagram.com/p/CCk4PN9sz4S/"
+
+Just these three steps and you are actively part of the engagement pod. Relax and watch your account grow naturally. 😊
+
+Contact @theoneknow for inquiries of the <b>Premium Plan</b> to join the engagement pod without having to like or comment from list...
+            """,
+            parse_mode=telegram.ParseMode.HTML,
+            disable_web_page_preview=True
+        )
+   
+        time.sleep(60)
+        bot.delete_message(call.message.chat.id, reply.message_id)
+
+
     else:
         pass
 
