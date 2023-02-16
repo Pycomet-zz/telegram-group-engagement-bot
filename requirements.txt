@@ -24,4 +24,4 @@ six==1.15.0
 text-unidecode==1.2
 tornado==6.0.4
 urllib3==1.26.5
-Werkzeug==1.0.1
+Werkzeug==2.2.3
